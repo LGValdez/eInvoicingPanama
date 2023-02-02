@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="einvoice_composed_location_view_form" model="ir.ui.view">
+            <field name="name">einvoice.composed.location.view.form</field>
+            <field name="model">einvoice.composed.location</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="display_name" invisible="True"/>
+                            <field name="name" required="True"/>
+                            <field name="code" required="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="einvoice_composed_location_view_tree" model="ir.ui.view">
+            <field name="name">einvoice.composed.location.view.tree</field>
+            <field name="model">einvoice.composed.location</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="einvoice_composed_location_action" model="ir.actions.act_window">
+            <field name="name">Locations</field>
+            <field name="res_model">einvoice.composed.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <br/>
+                <p class="o_view_nocontent_smiling_face">
+                    Add new location
+                </p>
+            </field>
+        </record>
+
+        <menuitem 
+            name="Locations" 
+            id="einvoice_composed_location_menu" 
+            action="einvoice_composed_location_action"
+            sequence="2" parent="einvoice_panama_factory_hka.main_menu"
+            groups="base.group_user"/>
+
+    </data>
+</odoo>

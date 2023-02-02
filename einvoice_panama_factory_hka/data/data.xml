@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="sequence_electronic_invoices" model="ir.sequence">
+            <field name="name">Sequence Electronic Invoices</field>
+            <field name="code">sequence.electronic.invoices</field>
+            <field eval="10" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+
+        <record id="sequence_electronic_credit_notes" model="ir.sequence">
+            <field name="name">Sequence Electronic Credit Notes</field>
+            <field name="code">sequence.electronic.credit.notes</field>
+            <field eval="10" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+
+        <record id="sequence_electronic_debit_notes" model="ir.sequence">
+            <field name="name">Sequence Electronic debit Notes</field>
+            <field name="code">sequence.electronic.debit.notes</field>
+            <field eval="10" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+
+        <record id="account_tax_itbms_00_sale" model="account.tax">
+            <field name="name">ITMBS 0%</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="einvoice_tax_code">00</field>
+        </record>
+
+        <record id="account_tax_itbms_01_sale" model="account.tax">
+            <field name="name">ITMBS 7%</field>
+            <field name="amount">7</field>
+            <field name="type_tax_use">sale</field>
+            <field name="einvoice_tax_code">01</field>
+        </record>
+
+        <record id="account_tax_itbms_02_sale" model="account.tax">
+            <field name="name">ITMBS 10%</field>
+            <field name="amount">10</field>
+            <field name="type_tax_use">sale</field>
+            <field name="einvoice_tax_code">02</field>
+        </record>
+
+        <record id="account_tax_itbms_03_sale" model="account.tax">
+            <field name="name">ITMBS 15%</field>
+            <field name="amount">15</field>
+            <field name="type_tax_use">sale</field>
+            <field name="einvoice_tax_code">03</field>
+        </record>
+
+        <record id="account_tax_itbms_00_purchase" model="account.tax">
+            <field name="name">ITMBS 0%</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="einvoice_tax_code">00</field>
+        </record>
+
+        <record id="account_tax_itbms_01_purchase" model="account.tax">
+            <field name="name">ITMBS 7%</field>
+            <field name="amount">7</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="einvoice_tax_code">01</field>
+        </record>
+
+        <record id="account_tax_itbms_02_purchase" model="account.tax">
+            <field name="name">ITMBS 10%</field>
+            <field name="amount">10</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="einvoice_tax_code">02</field>
+        </record>
+
+        <record id="account_tax_itbms_03_purchase" model="account.tax">
+            <field name="name">ITMBS 15%</field>
+            <field name="amount">15</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="einvoice_tax_code">03</field>
+        </record>
+
+    </data>
+</odoo>

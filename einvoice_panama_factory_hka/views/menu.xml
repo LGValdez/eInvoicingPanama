@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem name="eInvoice Panama" id="main_menu" web_icon="einvoice_panama_factory_hka,static/description/icon.png"/>
+
+        <menuitem 
+            name="Invoices" 
+            id="menu_invoices" 
+            action="account.action_move_out_invoice_type"
+            sequence="1" parent="einvoice_panama_factory_hka.main_menu"/>
+    </data>
+</odoo>

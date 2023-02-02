@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit_einvoice" model="ir.ui.view">
+            <field name="name">view.partner.form.inherit.einvoice</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="tipo_cliente_fe"/>
+                    <field name="tipo_contribuyente"/>
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="ruc_validator"/>
+                    <field name="composed_location_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

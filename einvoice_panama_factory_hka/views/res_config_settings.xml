@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.einvoice.panama.factory.hka</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="eInvoice Panama" string="eInvoice Panama"
+                     data-key="einvoice_panama_factory_hka">
+                    <h2>Credentials</h2>
+                    <div class="row mt16 o_settings_container" id="einvoice_panama_factory_hka_credentials">
+                        <div class="col-lg-6 col-12 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">The Facktory HKA Web Service</span>
+                                    <div class="text-muted">
+                                        Configure service URL and credentials
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label string="Service URL" for="service_url" class="col-lg-3 o_light_label"/>
+                                            <field name="service_url"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label string="Token User" for="token_user" class="col-lg-3 o_light_label"/>
+                                            <field name="token_user" password="True"/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="Token Password" for="token_password" class="col-lg-3 o_light_label"/>
+                                            <field name="token_password" password="True"/>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_einvoice_panama_factory_hka_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'einvoice_panama_factory_hka'}</field>
+    </record>
+
+    <menuitem 
+        name="Settings" 
+        id="menu_einvoice_panama_factory_hka_config_settings" 
+        action="einvoice_panama_factory_hka.action_einvoice_panama_factory_hka_config_settings"
+        sequence="100" parent="einvoice_panama_factory_hka.main_menu" groups="base.group_user"/>
+
+</odoo>
