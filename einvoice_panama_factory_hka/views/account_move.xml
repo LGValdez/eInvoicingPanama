@@ -14,15 +14,15 @@
                 <xpath expr="//page[@id='other_tab_entry']" position="after">
                     <page id="einvoice_panama_factory_hka" string="eInvoice" name="einvoice_panama_factory_hka">
                         <field name="einvoice_processed" invisible="1"/>
-                        <group string='Send Data' attrs="{'readonly': [('einvoice_processed', '=', True)]}">
+                        <group string='Send Data'>
                             <group>
-                                <field name="tipo_emision"/>
-                                <field name="tipo_documento"/>
+                                <field name="tipo_emision" attrs="{'readonly': [('einvoice_processed', '=', True)]}"/>
+                                <field name="tipo_documento" attrs="{'readonly': [('einvoice_processed', '=', True)]}"/>
                             </group>
                             <group>
-                                <field name="naturaleza_operacion"/>
-                                <field name="tipo_operacion"/>
-                                <field name="destino_operacion"/>
+                                <field name="naturaleza_operacion" attrs="{'readonly': [('einvoice_processed', '=', True)]}"/>
+                                <field name="tipo_operacion" attrs="{'readonly': [('einvoice_processed', '=', True)]}"/>
+                                <field name="destino_operacion" attrs="{'readonly': [('einvoice_processed', '=', True)]}"/>
                             </group>
                         </group>
                         <group string='Received Data'>
@@ -37,17 +37,10 @@
                             </group>
                         </group>
                         <group string='Actions'>
-                            <group>
-                                <button name="einvoice_send_document" type="object" string="Send Document" class="btn-link" icon="fa-arrow-right"/> 
-                                <br/>
-                                <button name="einvoice_document_status" type="object" string="Update Document Status" class="btn-link" icon="fa-arrow-right"/>
-                                <br/>
-                                <button name="einvoice_cancel_document" type="object" string="Cancel Document" class="btn-link" icon="fa-arrow-right"/>
-                                <br/>
-                                <button name="einvoice_download_pdf" type="object" string="Download PDF" class="btn-link" icon="fa-arrow-right"/>
-                                <br/>
-                            </group>
-                            <group/>
+                            <button name="einvoice_send_document" type="object" string="Send Document" class="btn-link" icon="fa-arrow-right" colspan="2"/>
+                            <button name="einvoice_document_status" type="object" string="Update Document Status" class="btn-link" icon="fa-arrow-right" colspan="2"/>
+                            <button name="einvoice_cancel_document" type="object" string="Cancel Document" class="btn-link" icon="fa-arrow-right" colspan="2"/>
+                            <button name="einvoice_download_pdf" type="object" string="Download PDF" class="btn-link" icon="fa-arrow-right" colspan="2"/>
                         </group>
                     </page>
                 </xpath>
