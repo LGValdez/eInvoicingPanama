@@ -59,7 +59,7 @@ class AccountMove(models.Model):
     einvoice_dgi_reception_date = fields.Char(string='DGI Date Reception', copy=False)
     einvoice_dgi_protocol_number = fields.Char(string='DGI Protocol Number', copy=False)
     einvoice_processed = fields.Boolean(string='eInvoice Processed', copy=False)
-    einvoice_status = fields.Char(string='Document Status', copy=False)
+    einvoice_status = fields.Char(string='eInvoice Status', copy=False)
     einvoice_pdf = fields.Binary(string='PDF', copy=False)
 
     def einvoice_send_document(self):

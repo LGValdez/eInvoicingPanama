@@ -46,5 +46,19 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_invoice_tree_inherit_einvoice" model="ir.ui.view">
+            <field name="name">view.invoice.tree.inherit.einvoice</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_state']" position="after">
+                    <field name="einvoice_status"
+                           widget="badge"
+                           decoration-danger="einvoice_status == 'Anulada'"
+                           decoration-success="einvoice_status == 'Autorizada'"
+                           optional="show"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
