@@ -11,7 +11,8 @@ Integration of POS with eInvoice Panama Factory HKA
     'category': 'Accounting',
     'depends' : ['einvoice_panama_factory_hka', 'point_of_sale'],
     'data': [
-        'views/report_invoice.xml',
+        'data/report_paperformat_data.xml',
+        'views/report_invoice_roll.xml',
         'views/account_report.xml',
     ],
     'installable': True,

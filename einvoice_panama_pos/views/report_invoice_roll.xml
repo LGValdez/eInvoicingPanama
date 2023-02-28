@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_roll_document">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <div class="text-center">
+                    <div>DGI</div>
+                    <div>Comprobante Auxiliar de Factura Electrónica</div>
+                </div>
+                <div class="text-center pb-2">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</div>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Tipo</span>&amp;nbsp; &amp;nbsp;<span>Factura</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Número</span> <t t-esc="o.einvoice_fiscal_number"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Fecha</span> <t t-esc="o._get_formatted_invoice_date()"/>
+                    </div>
+                    <div class="col-6">
+                        <span>Serie</span> <span>0000-001</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Sucursal</span>&amp;nbsp; &amp;nbsp;<span>0000</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Pto. Fact.</span>&amp;nbsp; &amp;nbsp;<span>001</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Receptor</span>&amp;nbsp; &amp;nbsp; &amp;nbsp;<t t-esc="o._get_client_type()"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Cliente</span>&amp;nbsp; &amp;nbsp; &amp;nbsp;<t t-esc="o.partner_id.name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Email</span>&amp;nbsp; &amp;nbsp; &amp;nbsp;<t t-esc="o.partner_id.email"/>
+                    </div>
+                </div>
+                <div class="text-center pb-2">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</div>
+                <div class="row text-center pb-2">
+                    <div class="col-12">DESCRIPCIÓN</div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-4">PRECIO</div>
+                    <div class="col-4">CANTIDAD</div>
+                    <div class="col-4">IMPORTE</div>
+                </div>
+                <div class="text-center pb-2">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</div>
+                <t t-foreach="o.invoice_line_ids" t-as="line">
+                    <div class="row text-left pb-2">
+                        <div class="col-12"><t t-esc="line.product_id.default_code"/> - <t t-esc="line.product_id.name"/></div>
+                    </div>
+                    <div class="row text-center pb-2">
+                        <div class="col-4"><t t-esc="'%.2f'% line.price_unit"/></div>
+                        <div class="col-4">x <t t-esc="'%.2f'% line.quantity"/></div>
+                        <div class="col-4"><t t-esc="'%.2f'% line.price_subtotal"/></div>
+                    </div>
+                </t>
+                <div class="text-center pb-2">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</div>
+                <div class="row pb-1">
+                    <span>Cantidad items:</span>&amp;nbsp; &amp;nbsp;<t t-esc="'%.2f'% o._get_total_items()"/>
+                </div>
+                <div class="row pb-1">
+                    <div class="col-10">SUBTOTAL</div>
+                    <div class="col-2 text-right"><t t-esc="'%.2f'% o.amount_untaxed"/></div>
+                </div>
+                <div class="row pb-1">
+                    <div class="col-10">ITBMS</div>
+                    <div class="col-2 text-right"><t t-esc="'%.2f'% o.amount_tax"/></div>
+                </div>
+                <div class="row pb-1">
+                    <div class="col-10">TOTAL</div>
+                    <div class="col-2 text-right"><t t-esc="'%.2f'% o.amount_total"/></div>
+                </div>
+                <div class="text-center pb-2">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</div>
+                <div class="row pb-1">
+                    <span>Protocolo de autorización:</span> <t t-esc="o.einvoice_dgi_protocol_number"/>
+                    <span> de </span> <t t-esc="o._get_formatted_invoice_date()"/>
+                </div>
+                <div class="row pb-1">
+                    <span>Consulte en línea usando el CUFE:</span> <t t-esc="o.einvoice_unique_code"/>
+                </div>
+            </t>
+
+        </template>
+
+        <template id="report_invoice_roll">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-esc="o.change_size_page(o.invoice_line_ids)"/>
+                    <t t-set="lang" t-value="o.partner_id.lang"/>
+                    <t t-set="print_with_payments" t-value="True"/>
+                    <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'"
+                        t-call="einvoice_panama_pos.report_invoice_roll_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
